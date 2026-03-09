@@ -20,3 +20,27 @@ export interface PositionnementPoint {
   titre: string;
   texte: string;
 }
+
+export type TypeDemande =
+  | "Demande de devis"
+  | "Demande d'information"
+  | "Partenariat / sourcing"
+  | "Autre";
+
+export interface ContactFormData {
+  nom: string;
+  entreprise: string;
+  email: string;
+  telephone: string;
+  type_demande: TypeDemande;
+  message: string;
+  consentement_confidentialite: boolean;
+}
+
+/** Correspond exactement à la table Supabase `demandes_contact` */
+export interface DemandeContact extends ContactFormData {
+  id: string;
+  created_at: string;
+  source_page: string;
+  statut: "nouveau" | "traité" | "archivé";
+}
