@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ─── Variables de design — à affiner à l'étape charte visuelle ─── */
+/* ─── Variables de design ─── */
 :root {
   --color-bg: #f9f7f4;
   --color-surface: #ffffff;
@@ -9,7 +9,6 @@
   --color-accent: #c8a96e;
   --color-accent-dark: #a88a52;
   --color-border: #e2ddd8;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --max-width: 1200px;
   --radius: 4px;
 }
@@ -31,12 +30,12 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-sans);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Typographie de base ─── */
+/* ─── Typographie ─── */
 h1, h2, h3, h4 {
   line-height: 1.25;
   font-weight: 600;

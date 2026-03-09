@@ -15,3 +15,8 @@ export interface ChiffreCle {
   valeur: string;
   label: string;
 }
+
+export interface PositionnementPoint {
+  titre: string;
+  texte: string;
+}
