@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Variables globales — seront développées à l'étape design */
+:root {
+  --color-primary: #1a1a1a;
+  --color-accent: #c8a96e;
+  --color-bg: #f9f7f4;
+  --color-text: #2c2c2c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, sans-serif;
+}
