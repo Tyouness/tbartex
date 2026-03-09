@@ -1,7 +1,18 @@
+import Container from "@/components/ui/Container";
+import SectionWrapper from "@/components/ui/SectionWrapper";
+import PageHero from "@/components/sections/PageHero";
+
 export default function MentionsLegalesPage() {
   return (
-    <div>
-      <h1>Mentions légales — placeholder</h1>
-    </div>
+    <>
+      <PageHero title="Mentions légales" />
+      <SectionWrapper alternate>
+        <Container>
+          <p className="text-sm text-[#a0a0a0] italic">
+            Contenu à compléter avant mise en production.
+          </p>
+        </Container>
+      </SectionWrapper>
+    </>
   );
 }
