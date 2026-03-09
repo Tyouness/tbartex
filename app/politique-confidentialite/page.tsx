@@ -104,10 +104,10 @@ export default function PolitiqueConfidentialitePage() {
                 Base légale du traitement
               </h2>
               <p className="text-sm text-[#6b6b6b] leading-relaxed">
-                Le traitement repose sur le{" "}
-                <strong className="text-[#1e1e1e]">consentement explicite</strong>{" "}
-                de la personne concernée, matérialisé par la case à cocher dans le
-                formulaire de contact. Ce consentement peut être retiré à tout
+                Les données sont traitées dans le cadre de la demande de contact
+                initiée par la personne concernée. Le consentement est recueilli
+                via la case à cocher du formulaire, dont la validation conditionne
+                l&apos;envoi de la demande. Ce consentement peut être retiré à tout
                 moment en nous contactant à l&apos;adresse indiquée ci-dessous.
               </p>
             </section>
@@ -223,13 +223,13 @@ export default function PolitiqueConfidentialitePage() {
               </h2>
               <div className="flex flex-col gap-2 text-sm text-[#6b6b6b] leading-relaxed">
                 <p>
-                  Ce site n&apos;utilise pas de cookies publicitaires, de tracking ou
-                  d&apos;analyse comportementale.
+                  Ce site n&apos;utilise pas de cookies publicitaires, de tracking
+                  ou d&apos;analyse comportementale.
                 </p>
                 <p>
-                  Des cookies techniques peuvent être déposés par le framework
-                  utilisé pour le bon fonctionnement du site. Ils ne contiennent
-                  aucune donnée personnelle identifiable et ne nécessitent pas de
+                  Seuls des cookies strictement techniques peuvent être utilisés
+                  pour le bon fonctionnement du site. Ils ne sont déposés à
+                  aucune fin publicitaire ni analytique et ne nécessitent pas de
                   consentement.
                 </p>
               </div>
