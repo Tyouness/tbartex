@@ -36,4 +36,23 @@ export const siteConfig = {
     "Réactivité et disponibilité",
     "Conseil personnalisé selon l'usage final",
   ],
+
+  // ── Données légales ─────────────────────────────────────────────────────
+  // /!\ Ces champs sont à compléter avec les vraies informations de Tbartex
+  //     avant toute mise en production publique.
+  legal: {
+    raisonSociale:        "[À compléter — ex : Tbartex SARL]",
+    formeJuridique:       "[À compléter — ex : SARL, SA, SURL]",
+    siege:                "[À compléter — ex : 12 rue de l'Industrie, Casablanca 20000, Maroc]",
+    rc:                   "[À compléter — numéro Registre de Commerce]",
+    ice:                  "[À compléter — Identifiant Commun de l'Entreprise]",
+    directeurPublication: "[À compléter — Nom Prénom du responsable légal]",
+    nomDomaine:           "tbartex.com",
+    hebergeurNom:         "Vercel Inc.",
+    hebergeurAdresse:     "340 Pine Street, Suite 1200, San Francisco, CA 94104, États-Unis",
+    hebergeurSite:        "https://vercel.com",
+    emailRgpd:            "contact@tbartex.com",
+    dureeConservation:    "3 ans",
+    dateMaj:              "10 mars 2026",
+  },
 } as const;
