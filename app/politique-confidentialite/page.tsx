@@ -4,6 +4,7 @@ import PageHero from "@/components/sections/PageHero";
 import { siteConfig } from "@/content/site";
 
 const { legal, email } = siteConfig;
+const supabaseRegion = legal.supabaseRegion;
 
 export default function PolitiqueConfidentialitePage() {
   return (
@@ -148,12 +149,13 @@ export default function PolitiqueConfidentialitePage() {
                   >
                     supabase.com
                   </a>).
+                  Région de stockage : <em>{supabaseRegion}</em>.
                 </p>
                 <p>
-                  Les données peuvent être hébergées en dehors de l&apos;Union
-                  européenne (région AWS par défaut). Supabase s&apos;engage à appliquer
-                  les clauses contractuelles types (CCT) de la Commission
-                  européenne pour tout transfert hors UE.
+                  Si les données sont hébergées en dehors de l&apos;Union européenne,
+                  Supabase s&apos;engage contractuellement à respecter les exigences
+                  applicables aux transferts de données (clauses contractuelles
+                  types de la Commission européenne).
                 </p>
               </div>
             </section>

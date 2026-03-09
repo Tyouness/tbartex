@@ -51,6 +51,10 @@ export const siteConfig = {
     hebergeurNom:         "Vercel Inc.",
     hebergeurAdresse:     "340 Pine Street, Suite 1200, San Francisco, CA 94104, États-Unis",
     hebergeurSite:        "https://vercel.com",
+    // Région du projet Supabase — à renseigner après création du projet
+    // Exemples : "eu-west-2 (Europe — Irlande)", "us-east-1 (États-Unis)"
+    // Cette valeur conditionne la mention transfert hors UE dans la politique de confidentialité.
+    supabaseRegion:       "[À compléter — région choisie lors de la création du projet Supabase]",
     emailRgpd:            "contact@tbartex.com",
     dureeConservation:    "3 ans",
     dateMaj:              "10 mars 2026",
