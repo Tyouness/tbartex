@@ -7,49 +7,46 @@ export default function HomePage() {
   return (
     <>
       {/* ─── Hero ─── */}
-      <section className="min-h-[calc(100vh-72px)] flex flex-col justify-between bg-white">
-        {/* Espace haut */}
-        <div />
-        {/* Contenu ancré en bas */}
+      <section className="min-h-[calc(100vh-72px)] flex items-center bg-white">
         <Container>
-          <div className="pb-20 md:pb-28">
-            <p className="flex items-center gap-4 text-[10px] font-medium tracking-[0.2em] uppercase text-[#9a9a9a] mb-12">
+          <div className="py-24 md:py-32 max-w-[780px]">
+            <p className="flex items-center gap-4 text-[10px] font-medium tracking-[0.2em] uppercase text-[#9a9a9a] mb-10">
               <span className="inline-block w-6 h-px bg-[#d0d0d0]" aria-hidden="true" />
               Importateur B2B de fils textiles &mdash; depuis {siteConfig.anneeCreation}
             </p>
 
-            <h1 className="text-[#111111] max-w-[18ch] mb-16">
-              Approvisionner l&apos;industrie textile avec rigueur.
+            <h1 className="text-[#111111] mb-8" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}>
+              Approvisionner l&apos;industrie textile<br />
+              avec rigueur et fiabilité.
             </h1>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-10 pt-10 border-t border-[#f0f0f0]">
-              <p className="text-[15px] text-[#5a5a5a] max-w-[36ch] leading-relaxed">
-                Sourcing international, gamme large,<br />
-                accompagnement technique concret.
-              </p>
-              <div className="flex items-center gap-5">
-                <Button href="/contact" variant="primary">
-                  Parler de votre besoin
-                </Button>
-                <Button href="/nos-fils" variant="ghost">
-                  Nos fils
-                </Button>
-              </div>
+            <p className="text-[16px] text-[#6a6a6a] max-w-[44ch] leading-relaxed mb-12">
+              Tbartex fournit les industriels textiles en fils de qualité,
+              en volumes réguliers, avec un accompagnement technique concret.
+            </p>
+
+            <div className="flex items-center gap-6">
+              <Button href="/contact" variant="primary">
+                Parler de votre besoin
+              </Button>
+              <Button href="/nos-fils" variant="secondary">
+                Voir nos fils
+              </Button>
             </div>
           </div>
         </Container>
       </section>
 
       {/* ─── Pourquoi Tbartex ─── */}
-      <section className="py-28 bg-[#f9f9f9]">
+      <section className="py-24 bg-[#f9f9f9]">
         <Container>
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#9a9a9a] mb-16">
+          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#9a9a9a] mb-14">
             Pourquoi Tbartex
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
             {siteConfig.positionnement.map((point, i) => (
-              <div key={point.titre}>
-                <p className="text-[10px] tracking-[0.2em] text-[#cccccc] mb-8">
+              <div key={point.titre} className="pt-8 border-t border-[#e8e8e8]">
+                <p className="text-[11px] font-medium tracking-[0.15em] text-[#bbbbbb] mb-6">
                   0{i + 1}
                 </p>
                 <h3 className="text-[15px] font-medium text-[#111111] leading-snug mb-4">
@@ -63,15 +60,15 @@ export default function HomePage() {
       </section>
 
       {/* ─── Chiffres clés ─── */}
-      <section className="py-28 bg-white">
+      <section className="py-20 bg-white border-y border-[#f0f0f0]">
         <Container>
-          <div className="grid grid-cols-3 gap-6 md:gap-12">
+          <div className="grid grid-cols-3 divide-x divide-[#f0f0f0]">
             {siteConfig.chiffresCles.map((c) => (
-              <div key={c.label}>
-                <p className="text-[clamp(2.75rem,6vw,5.5rem)] font-thin text-[#111111] tracking-tight leading-none mb-4">
+              <div key={c.label} className="px-6 md:px-12 first:pl-0 last:pr-0 flex flex-col justify-center py-4">
+                <p className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-light text-[#111111] tracking-tight leading-none mb-3">
                   {c.valeur}
                 </p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa]">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] leading-tight">
                   {c.label}
                 </p>
               </div>
@@ -81,11 +78,11 @@ export default function HomePage() {
       </section>
 
       {/* ─── Plus qu'un fournisseur ─── */}
-      <section className="py-28 bg-[#f9f9f9]">
+      <section className="py-24 bg-[#f9f9f9]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-[#111111] mb-8">
+              <h2 className="text-[#111111] mb-6" style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}>
                 Plus qu&apos;un fournisseur de fil.
               </h2>
               <p className="text-[15px] text-[#5a5a5a] leading-relaxed mb-10">
@@ -97,19 +94,19 @@ export default function HomePage() {
                 Notre approche
               </Button>
             </div>
-            <div className="md:pt-10">
+            <div className="md:pt-4">
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] mb-8">
                 Ce que ça change
               </p>
-              <ul className="flex flex-col gap-6">
+              <ul className="flex flex-col">
                 {[
                   "Conseil matière et substitution",
                   "Optimisation des coûts sourcing",
                   "Réactivité sur les délais",
                   "Interlocuteur direct, sans intermédiaire",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-[14px] text-[#5a5a5a]">
-                    <span className="mt-[7px] w-4 h-px bg-[#cccccc] shrink-0" />
+                  <li key={item} className="flex items-center gap-5 text-[14px] text-[#5a5a5a] py-4 border-b border-[#ebebeb] last:border-0">
+                    <span className="w-1 h-1 rounded-full bg-[#aaaaaa] shrink-0" />
                     {item}
                   </li>
                 ))}
