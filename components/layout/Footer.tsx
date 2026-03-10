@@ -1,93 +1,89 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
 
-const navLinks = [
+const nav = [
   { label: "L'entreprise", href: "/entreprise" },
   { label: "Nos fils", href: "/nos-fils" },
   { label: "Conseil", href: "/conseil" },
   { label: "Contact", href: "/contact" },
 ];
 
-const legalLinks = [
+const legal = [
   { label: "Mentions légales", href: "/mentions-legales" },
-  { label: "Politique de confidentialité", href: "/politique-confidentialite" },
+  { label: "Confidentialité", href: "/politique-confidentialite" },
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-[#000000] text-white">
+    <footer className="bg-[#111111]">
+      <div className="w-full mx-auto px-8 max-w-[1200px] py-20">
 
-      {/* Bloc principal */}
-      <div className="w-full mx-auto px-6 max-w-[1200px] py-16 grid grid-cols-1 sm:grid-cols-3 gap-12">
+        {/* Grille infos */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
 
-        {/* Identité */}
-        <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white mb-4">
-            {siteConfig.nom}
-          </p>
-          <p className="text-sm text-[#666666] leading-relaxed">
-            Importateur B2B de fils textiles<br />
-            depuis {siteConfig.anneeCreation}
-          </p>
+          <div className="col-span-2 md:col-span-1">
+            <p className="text-[13px] font-medium tracking-[0.25em] uppercase text-white mb-5">
+              {siteConfig.nom}
+            </p>
+            <p className="text-[13px] text-[#666666] leading-relaxed">
+              Importateur B2B<br />de fils textiles
+            </p>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-medium tracking-[0.18em] uppercase text-[#3a3a3a] mb-5">
+              Pages
+            </p>
+            <ul className="flex flex-col gap-3">
+              {nav.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-[13px] text-[#777777] hover:text-white transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-medium tracking-[0.18em] uppercase text-[#3a3a3a] mb-5">
+              Contact
+            </p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="block text-[13px] text-[#777777] hover:text-white transition-colors mb-3"
+            >
+              {siteConfig.email}
+            </a>
+            <a
+              href={`tel:${siteConfig.telephone}`}
+              className="block text-[13px] text-[#777777] hover:text-white transition-colors"
+            >
+              {siteConfig.telephone}
+            </a>
+          </div>
+
         </div>
 
-        {/* Navigation */}
-        <nav aria-label="Navigation pied de page">
-          <p className="text-[10px] uppercase tracking-[0.15em] text-[#444444] mb-5">
-            Navigation
-          </p>
-          <ul className="flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-[#888888] hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Contact */}
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.15em] text-[#444444] mb-5">
-            Contact
-          </p>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="block text-sm text-[#888888] hover:text-white transition-colors mb-3"
-          >
-            {siteConfig.email}
-          </a>
-          <a
-            href={`tel:${siteConfig.telephone}`}
-            className="block text-sm text-[#888888] hover:text-white transition-colors"
-          >
-            {siteConfig.telephone}
-          </a>
-        </div>
-      </div>
-
-      {/* Barre basse */}
-      <div className="border-t border-[#1a1a1a]">
-        <div className="w-full mx-auto px-6 max-w-[1200px] py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <p className="text-[11px] text-[#444444]">
-            &copy; {siteConfig.anneeCreation}&ndash;{new Date().getFullYear()} {siteConfig.nom}
+        {/* Bas de footer */}
+        <div className="pt-8 border-t border-[#222222] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-[11px] text-[#3a3a3a]">
+            &copy; {siteConfig.anneeCreation}&ndash;{year} {siteConfig.nom}
           </p>
           <div className="flex gap-6">
-            {legalLinks.map((link) => (
+            {legal.map((l) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-[11px] text-[#444444] hover:text-[#888888] transition-colors"
+                key={l.href}
+                href={l.href}
+                className="text-[11px] text-[#3a3a3a] hover:text-[#777777] transition-colors"
               >
-                {link.label}
+                {l.label}
               </Link>
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );

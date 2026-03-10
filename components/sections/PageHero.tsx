@@ -3,15 +3,21 @@ import Container from "@/components/ui/Container";
 interface PageHeroProps {
   title: string;
   subtitle?: string;
+  label?: string;
 }
 
-export default function PageHero({ title, subtitle }: PageHeroProps) {
+export default function PageHero({ title, subtitle, label }: PageHeroProps) {
   return (
-    <section className="py-20 md:py-28 border-b border-[#e5e5e5] bg-white">
+    <section className="bg-white pt-20 pb-16 md:pt-28 md:pb-20">
       <Container>
-        <h1 className="text-[#0a0a0a] mb-6">{title}</h1>
+        {label && (
+          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#9a9a9a] mb-8">
+            {label}
+          </p>
+        )}
+        <h1 className="text-[#111111] max-w-3xl mb-6">{title}</h1>
         {subtitle && (
-          <p className="text-base md:text-lg text-[#525252] max-w-2xl leading-relaxed">
+          <p className="text-base text-[#6a6a6a] max-w-xl leading-relaxed">
             {subtitle}
           </p>
         )}

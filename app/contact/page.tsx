@@ -16,9 +16,9 @@ const TYPES_DEMANDE: TypeDemande[] = [
 ];
 
 const inputClass =
-  "w-full h-11 px-4 border border-[#e5e5e5] bg-white text-sm text-[#0a0a0a] outline-none focus:border-[#0a0a0a] transition-colors placeholder:text-[#a3a3a3] disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full h-12 px-5 border border-[#ebebeb] bg-white text-[14px] text-[#111111] outline-none focus:border-[#aaaaaa] transition-colors placeholder:text-[#cccccc] disabled:opacity-50 disabled:cursor-not-allowed";
 
-const labelClass = "block text-xs uppercase tracking-wide text-[#525252] mb-2";
+const labelClass = "block text-[10px] font-medium uppercase tracking-[0.18em] text-[#9a9a9a] mb-3";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -113,8 +113,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        title="Prenons contact"
-        subtitle={`${siteConfig.delaiReponse}. Remplissez le formulaire ci-dessous ou écrivez-nous directement.`}
+        label="Contact"
+        title="Parlons de votre besoin."
+        subtitle={`${siteConfig.delaiReponse}. Remplissez le formulaire ou écrivez-nous directement.`}
       />
 
       <SectionWrapper alternate>
@@ -123,19 +124,15 @@ export default function ContactPage() {
 
             {/* Formulaire */}
             {status === "success" ? (
-              <div className="flex flex-col gap-5 justify-center py-8">
-                <div className="w-10 h-10 rounded-full bg-[#e8f5e9] flex items-center justify-center mb-2">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 10l4 4 8-8" stroke="#3a7d44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                  <h2 className="text-xl font-semibold text-[#0a0a0a]">Demande envoyée</h2>
-                <p className="text-[#525252]">
+              <div className="flex flex-col gap-6 justify-center py-12">
+                <div className="w-8 h-px bg-[#cccccc] mb-4" />
+                  <h2 className="text-[22px] font-light text-[#111111] tracking-tight">Demande bien reçue.</h2>
+                <p className="text-[14px] text-[#666666] leading-relaxed">
                   Nous avons bien reçu votre message. {siteConfig.delaiReponse.toLowerCase()}.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-sm text-[#525252] hover:text-[#0a0a0a] transition-colors text-left"
+                  className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#9a9a9a] hover:text-[#111111] transition-colors text-left"
                 >
                   Envoyer une autre demande &rarr;
                 </button>
@@ -157,7 +154,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="nom" className={labelClass}>
-                      Prénom / Nom <span className="text-[#a3a3a3]">*</span>
+                      Prénom / Nom <span className="text-[#cccccc]">*</span>
                     </label>
                     <input
                       id="nom"
@@ -174,7 +171,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="entreprise" className={labelClass}>
-                      Entreprise <span className="text-[#a3a3a3]">*</span>
+                      Entreprise <span className="text-[#cccccc]">*</span>
                     </label>
                     <input
                       id="entreprise"
@@ -193,7 +190,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="email" className={labelClass}>
-                    Email <span className="text-[#a3a3a3]">*</span>
+                    Email <span className="text-[#cccccc]">*</span>
                   </label>
                   <input
                     id="email"
@@ -212,7 +209,7 @@ export default function ContactPage() {
                 <div>
                   <label htmlFor="telephone" className={labelClass}>
                     Téléphone{" "}
-                    <span className="text-[#a3a3a3] normal-case tracking-normal font-normal">(optionnel)</span>
+                    <span className="text-[#cccccc] normal-case tracking-normal font-normal">(optionnel)</span>
                   </label>
                   <input
                     id="telephone"
@@ -229,7 +226,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="type_demande" className={labelClass}>
-                    Type de demande <span className="text-[#a3a3a3]">*</span>
+                    Type de demande <span className="text-[#cccccc]">*</span>
                   </label>
                   <select
                     id="type_demande"
@@ -247,7 +244,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="message" className={labelClass}>
-                    Message <span className="text-[#a3a3a3]">*</span>
+                    Message <span className="text-[#cccccc]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -272,16 +269,16 @@ export default function ContactPage() {
                     disabled={isLoading}
                     required
                   />
-                  <span className="text-xs text-[#525252] leading-relaxed">
+                  <span className="text-[13px] text-[#888888] leading-relaxed">
                     J&apos;accepte que mes données soient utilisées pour traiter ma demande,
                     conformément à la{" "}
                     <Link
                       href="/politique-confidentialite"
-                      className="text-[#0a0a0a] hover:text-[#525252] underline underline-offset-2"
+                      className="text-[#111111] hover:text-[#555555] underline underline-offset-2"
                     >
                       politique de confidentialité
                     </Link>
-                    . <span className="text-[#a3a3a3]">*</span>
+                    . <span className="text-[#cccccc]">*</span>
                   </span>
                 </label>
 
@@ -294,7 +291,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="h-11 px-6 bg-[#0a0a0a] text-white text-sm font-medium hover:bg-[#2a2a2a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="h-12 px-8 bg-[#111111] text-white text-[11px] font-medium tracking-[0.12em] uppercase hover:bg-[#333333] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isLoading ? (
                     <>
@@ -312,27 +309,27 @@ export default function ContactPage() {
             )}
 
             {/* Coordonnées */}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-12 md:pt-4">
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#a3a3a3] mb-3">Email</p>
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] mb-4">Email</p>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-base text-[#0a0a0a] hover:text-[#525252] transition-colors"
+                  className="text-[15px] text-[#111111] hover:text-[#555555] transition-colors"
                 >
                   {siteConfig.email}
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#a3a3a3] mb-3">Téléphone</p>
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] mb-4">Téléphone</p>
                 <a
                   href={`tel:${siteConfig.telephone}`}
-                  className="text-base text-[#0a0a0a] hover:text-[#525252] transition-colors"
+                  className="text-[15px] text-[#111111] hover:text-[#555555] transition-colors"
                 >
                   {siteConfig.telephone}
                 </a>
               </div>
-              <div className="border-t border-[#e5e5e5] pt-6">
-                <p className="text-sm text-[#525252]">{siteConfig.delaiReponse}.</p>
+              <div className="pt-8 border-t border-[#f0f0f0]">
+                <p className="text-[13px] text-[#888888] leading-relaxed">{siteConfig.delaiReponse}.</p>
               </div>
             </div>
 
