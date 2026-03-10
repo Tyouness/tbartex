@@ -8,19 +8,13 @@ interface SectionWrapperProps {
   alternate?: boolean;
 }
 
-/**
- * Bloc de section avec espacement vertical standardisé.
- * alternate=true applique un fond légèrement différent.
- */
 export default function SectionWrapper({
   children,
   className = "",
   as: Tag = "section",
   alternate = false,
 }: SectionWrapperProps) {
-  const base = alternate
-    ? "py-16 bg-white"
-    : "py-16";
+  const base = alternate ? "py-20 bg-[#f5f5f5]" : "py-20 bg-white";
   return (
     <Tag className={className ? `${base} ${className}` : base}>
       {children}

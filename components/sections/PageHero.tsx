@@ -5,17 +5,15 @@ interface PageHeroProps {
   subtitle?: string;
 }
 
-/**
- * Hero de page intérieure : titre + sous-titre optionnel.
- * Utilisé sur toutes les pages sauf l'Accueil.
- */
 export default function PageHero({ title, subtitle }: PageHeroProps) {
   return (
-    <section className="py-16 border-b border-[#e2ddd8] bg-white">
+    <section className="py-20 md:py-28 border-b border-[#e5e5e5] bg-white">
       <Container>
-        <h1 className="text-4xl font-semibold text-[#1e1e1e] mb-4">{title}</h1>
+        <h1 className="text-[#0a0a0a] mb-6">{title}</h1>
         {subtitle && (
-          <p className="text-lg text-[#6b6b6b] max-w-2xl">{subtitle}</p>
+          <p className="text-base md:text-lg text-[#525252] max-w-2xl leading-relaxed">
+            {subtitle}
+          </p>
         )}
       </Container>
     </section>

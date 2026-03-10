@@ -14,11 +14,11 @@ interface ButtonProps {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "inline-block px-6 py-3 text-sm font-semibold tracking-wide uppercase bg-[#1e1e1e] text-white hover:bg-[#c8a96e] transition-colors duration-200 rounded-[4px]",
+    "inline-flex items-center gap-2 px-7 py-3.5 text-[11px] font-medium tracking-[0.12em] uppercase bg-[#0a0a0a] text-white hover:bg-[#2a2a2a] transition-colors duration-200",
   secondary:
-    "inline-block px-6 py-3 text-sm font-semibold tracking-wide uppercase border border-[#1e1e1e] text-[#1e1e1e] hover:bg-[#1e1e1e] hover:text-white transition-colors duration-200 rounded-[4px]",
+    "inline-flex items-center gap-2 px-7 py-3.5 text-[11px] font-medium tracking-[0.12em] uppercase border border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors duration-200",
   ghost:
-    "inline-block px-4 py-2 text-sm font-medium text-[#1e1e1e] underline-offset-4 hover:underline hover:text-[#c8a96e] transition-colors duration-200",
+    "inline-flex items-center gap-2 text-sm font-normal text-[#0a0a0a] border-b border-[#0a0a0a] pb-0.5 hover:text-[#525252] hover:border-[#525252] transition-colors duration-200",
 };
 
 export default function Button({

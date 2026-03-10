@@ -16,9 +16,9 @@ const TYPES_DEMANDE: TypeDemande[] = [
 ];
 
 const inputClass =
-  "w-full h-11 px-4 border border-[#e2ddd8] bg-white text-sm text-[#1e1e1e] rounded-[4px] outline-none focus:border-[#c8a96e] transition-colors placeholder:text-[#c0bbb5] disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full h-11 px-4 border border-[#e5e5e5] bg-white text-sm text-[#0a0a0a] outline-none focus:border-[#0a0a0a] transition-colors placeholder:text-[#a3a3a3] disabled:opacity-50 disabled:cursor-not-allowed";
 
-const labelClass = "block text-xs uppercase tracking-wide text-[#6b6b6b] mb-2";
+const labelClass = "block text-xs uppercase tracking-wide text-[#525252] mb-2";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -129,13 +129,13 @@ export default function ContactPage() {
                     <path d="M4 10l4 4 8-8" stroke="#3a7d44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h2 className="text-xl font-semibold text-[#1e1e1e]">Demande envoyée</h2>
-                <p className="text-[#6b6b6b]">
+                  <h2 className="text-xl font-semibold text-[#0a0a0a]">Demande envoyée</h2>
+                <p className="text-[#525252]">
                   Nous avons bien reçu votre message. {siteConfig.delaiReponse.toLowerCase()}.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-sm text-[#c8a96e] hover:text-[#a88a52] transition-colors text-left"
+                  className="text-sm text-[#525252] hover:text-[#0a0a0a] transition-colors text-left"
                 >
                   Envoyer une autre demande &rarr;
                 </button>
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="nom" className={labelClass}>
-                      Prénom / Nom <span className="text-[#c8a96e]">*</span>
+                      Prénom / Nom <span className="text-[#a3a3a3]">*</span>
                     </label>
                     <input
                       id="nom"
@@ -174,7 +174,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="entreprise" className={labelClass}>
-                      Entreprise <span className="text-[#c8a96e]">*</span>
+                      Entreprise <span className="text-[#a3a3a3]">*</span>
                     </label>
                     <input
                       id="entreprise"
@@ -193,7 +193,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="email" className={labelClass}>
-                    Email <span className="text-[#c8a96e]">*</span>
+                    Email <span className="text-[#a3a3a3]">*</span>
                   </label>
                   <input
                     id="email"
@@ -212,7 +212,7 @@ export default function ContactPage() {
                 <div>
                   <label htmlFor="telephone" className={labelClass}>
                     Téléphone{" "}
-                    <span className="text-[#a0a0a0] normal-case tracking-normal font-normal">(optionnel)</span>
+                    <span className="text-[#a3a3a3] normal-case tracking-normal font-normal">(optionnel)</span>
                   </label>
                   <input
                     id="telephone"
@@ -229,7 +229,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="type_demande" className={labelClass}>
-                    Type de demande <span className="text-[#c8a96e]">*</span>
+                    Type de demande <span className="text-[#a3a3a3]">*</span>
                   </label>
                   <select
                     id="type_demande"
@@ -247,7 +247,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="message" className={labelClass}>
-                    Message <span className="text-[#c8a96e]">*</span>
+                    Message <span className="text-[#a3a3a3]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -266,22 +266,22 @@ export default function ContactPage() {
                   <input
                     name="consentement_confidentialite"
                     type="checkbox"
-                    className="mt-0.5 w-4 h-4 shrink-0 accent-[#c8a96e] cursor-pointer"
+                    className="mt-0.5 w-4 h-4 shrink-0 accent-[#0a0a0a] cursor-pointer"
                     checked={fields.consentement_confidentialite}
                     onChange={handleChange}
                     disabled={isLoading}
                     required
                   />
-                  <span className="text-xs text-[#6b6b6b] leading-relaxed">
+                  <span className="text-xs text-[#525252] leading-relaxed">
                     J&apos;accepte que mes données soient utilisées pour traiter ma demande,
                     conformément à la{" "}
                     <Link
                       href="/politique-confidentialite"
-                      className="text-[#c8a96e] hover:text-[#a88a52] underline underline-offset-2"
+                      className="text-[#0a0a0a] hover:text-[#525252] underline underline-offset-2"
                     >
                       politique de confidentialité
                     </Link>
-                    . <span className="text-[#c8a96e]">*</span>
+                    . <span className="text-[#a3a3a3]">*</span>
                   </span>
                 </label>
 
@@ -294,7 +294,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="h-11 px-6 bg-[#1e1e1e] text-white text-sm font-medium rounded-[4px] hover:bg-[#2d2d2d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="h-11 px-6 bg-[#0a0a0a] text-white text-sm font-medium hover:bg-[#2a2a2a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isLoading ? (
                     <>
@@ -314,25 +314,25 @@ export default function ContactPage() {
             {/* Coordonnées */}
             <div className="flex flex-col gap-8">
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#a0a0a0] mb-3">Email</p>
+                <p className="text-xs uppercase tracking-widest text-[#a3a3a3] mb-3">Email</p>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-base text-[#1e1e1e] hover:text-[#c8a96e] transition-colors"
+                  className="text-base text-[#0a0a0a] hover:text-[#525252] transition-colors"
                 >
                   {siteConfig.email}
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#a0a0a0] mb-3">Téléphone</p>
+                <p className="text-xs uppercase tracking-widest text-[#a3a3a3] mb-3">Téléphone</p>
                 <a
                   href={`tel:${siteConfig.telephone}`}
-                  className="text-base text-[#1e1e1e] hover:text-[#c8a96e] transition-colors"
+                  className="text-base text-[#0a0a0a] hover:text-[#525252] transition-colors"
                 >
                   {siteConfig.telephone}
                 </a>
               </div>
-              <div className="border-t border-[#e2ddd8] pt-6">
-                <p className="text-sm text-[#6b6b6b]">{siteConfig.delaiReponse}.</p>
+              <div className="border-t border-[#e5e5e5] pt-6">
+                <p className="text-sm text-[#525252]">{siteConfig.delaiReponse}.</p>
               </div>
             </div>
 
