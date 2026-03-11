@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Header from "@/components/chrome/Header";
+import Footer from "@/components/chrome/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tbartex — Importateur B2B de fils textiles",
+  title: "Tbartex | Fil Textile Premium",
   description:
-    "Tbartex approvisionne des industriels textiles en fils de qualité. Sourcing international, conseil expert, volumes adaptés.",
+    "Tbartex accompagne les marques et industriels avec une offre fil premium, fiable et orientee execution.",
 };
 
 export default function RootLayout({
@@ -23,9 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={inter.variable}>
-      <body>
+      <body className="bg-[#040405] text-[#ece9e3]">
         <Header />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>
