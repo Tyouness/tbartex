@@ -168,13 +168,13 @@ export default function HomePage() {
             padding: "clamp(10px, 4vw, 45px) 0",
           }}
         >
-          <div style={{
+          <div className="tb-hero-content" style={{
             position: "relative",
             display: "grid",
             gap: 28,
             maxWidth: "min(720px, 66%)",
-            paddingLeft: "clamp(32px, 6vw, 96px)",
-            paddingRight: "clamp(32px, 6vw, 96px)",
+            paddingLeft: "clamp(20px, 6vw, 96px)",
+            paddingRight: "clamp(20px, 6vw, 96px)",
             paddingTop: "clamp(32px, 4vw, 56px)",
             paddingBottom: "clamp(32px, 4vw, 56px)",
           }}>
@@ -240,6 +240,7 @@ export default function HomePage() {
       <section style={{ padding: "32px 0", background: "#CCC4B1" }}>
         <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
           <div
+            className="tb-grid-2-1"
             style={{
               display: "grid",
               gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
@@ -337,6 +338,7 @@ export default function HomePage() {
 
           {/* Ligne unique de 4 cartes */}
           <div
+            className="tb-grid-4-2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
@@ -459,6 +461,7 @@ export default function HomePage() {
           }}
         >
           <div
+            className="tb-grid-4-2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, minmax(0, 1fr))",

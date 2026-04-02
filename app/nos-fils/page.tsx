@@ -210,6 +210,7 @@ export default function NosFilsPage() {
             </p>
           </div>
           <div
+            className="tb-cat-nav"
             style={{
               display: "flex",
               gap: 32,
@@ -321,6 +322,7 @@ export default function NosFilsPage() {
                     {group.items.map((item, ii) => (
                       <div
                         key={ii}
+                        className="tb-product-row"
                         style={{
                           display: "grid",
                           gridTemplateColumns: "minmax(0, 1.6fr) minmax(0, 1fr)",

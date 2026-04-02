@@ -108,16 +108,16 @@ export default function ContactPage() {
       {/* CONTENU PRINCIPAL */}
       <section style={{ padding: "72px 0 96px", background: "#0d0d0d" }}>
         <div
-          className="tb-shell"
+          className="tb-shell tb-grid-2-1"
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.6fr)",
-            gap: "0 80px",
+            gap: "40px 80px",
             alignItems: "start",
           }}
         >
           {/* COLONNE GAUCHE — informations */}
-          <div style={{ display: "grid", gap: 40, position: "sticky", top: 32 }}>
+          <div className="tb-sticky-none" style={{ display: "grid", gap: 40, position: "sticky", top: 32 }}>
 
             <div style={{ display: "grid", gap: 20 }}>
               <p
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 />
 
                 {/* Ligne Nom + Entreprise */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                <div className="tb-grid-2-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   <div>
                     <label style={labelStyle}>Nom *</label>
                     <input
@@ -269,7 +269,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Ligne Email + Téléphone */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                <div className="tb-grid-2-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   <div>
                     <label style={labelStyle}>Email *</label>
                     <input
@@ -296,7 +296,7 @@ export default function ContactPage() {
                 {/* Type de demande */}
                 <div>
                   <label style={labelStyle}>Type de demande *</label>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                  <div className="tb-grid-2-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                     {TYPES.map((type) => {
                       const active = form.type_demande === type;
                       return (

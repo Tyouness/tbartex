@@ -78,11 +78,11 @@ export default function EntreprisePage() {
       {/* QUI NOUS SOMMES */}
       <section style={{ padding: "72px 0", background: "#0d0d0d", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div
-          className="tb-shell"
+          className="tb-shell tb-grid-2-1"
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.2fr)",
-            gap: "0 80px",
+            gap: "24px 80px",
             alignItems: "start",
           }}
         >
@@ -122,6 +122,7 @@ export default function EntreprisePage() {
             <span style={{ fontSize: 11, color: "#7a5e42", letterSpacing: "0.08em" }}>Catalogue disponible sur demande</span>
           </div>
           <div
+            className="tb-grid-3-2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
@@ -161,6 +162,7 @@ export default function EntreprisePage() {
           }}
         >
           <div
+            className="tb-grid-4-2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
@@ -202,6 +204,7 @@ export default function EntreprisePage() {
             </h2>
           </div>
           <div
+            className="tb-grid-2-1"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
