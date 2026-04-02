@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { label: "L'entreprise", href: "/entreprise" },
   { label: "Nos fils", href: "/nos-fils" },
-  { label: "Conseil", href: "/conseil" },
-  { label: "Contact", href: "/contact" },
+  { label: "Conseil & Contact", href: "/contact" },
 ];
 
 export default function Header() {

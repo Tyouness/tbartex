@@ -7,7 +7,7 @@ import ImageCompare from "@/components/ui/ImageCompare";
 ────────────────────────────────────────────────────────────────────────── */
 const IMAGES = {
   // Hero — bobines colorées premium, texture fil industriel
-  hero: "https://images.unsplash.com/photo-1614786269829-d24616faf56d?w=1600&q=85&auto=format&fit=crop",
+  hero: "/filebase.jpg?v=3",
 
   // Panels d'offre — 4 univers textile distincts et cohérents
   socks:
@@ -33,44 +33,43 @@ const IMAGES = {
 const offerPanels = [
   {
     title: "Chaussettes Et Maille Fine",
-    body: "Fils calibres pour regularite machine, tenue de toucher et stabilite coloristique en cadence industrielle.",
+    body: "Fils calibres pour regularite machine, tenue de toucher et stabilite coloristique en production de chaussettes.",
     img: IMAGES.socks,
   },
   {
     title: "Bonneterie Et Circularite",
-    body: "Solutions filaires pensees pour confort, elasticite maitrisee et repetition fiable des resultats en production.",
+    body: "Fils selectionnes pour confort, elasticite maitrisee et repetition fiable en production de bonneterie circulaire.",
     img: IMAGES.knit,
   },
   {
-    title: "Tissage Et Bandes Elastiques",
-    body: "Approvisionnements adaptes aux contraintes de tension, solidite d usage et comportement matiere en finition.",
+    title: "Tissage Et Elastiques",
+    body: "Fils et gommes adaptes aux contraintes de tension, solidite en usage et comportement matiere pour tissage et bandes elastiques.",
     img: IMAGES.weave,
   },
   {
     title: "Developpements Specifiques",
-    body: "References hors standard sur demande, selectionnees selon usage final, cout cible et niveau de qualite attendu.",
+    body: "Fils hors gamme standard: selectionnes sur mesure selon usage final, machine, cout cible et niveau de qualite attendu.",
     img: IMAGES.special,
   },
 ];
 
 const pillars = [
-  { n: "01", text: "Sourcing international fiable pour rythmes de production continus." },
-  { n: "02", text: "Offre construite pour l usage reel des industriels, fabricants et ateliers." },
-  { n: "03", text: "Conseil oriente resultat pour securiser qualite, cout et delai." },
+  { n: "01", text: "Fabrication de vetements cle-en-main pour marques, distributeurs et acheteurs professionnels." },
+  { n: "02", text: "Approvisionnement en fils techniques pour les industriels, fabricants et ateliers du textile." },
+  { n: "03", text: "Conseil matiere et production pour securiser qualite, cout et delai." },
 ];
 
 const valuePoints = [
   "Proposition d alternatives matiere selon contraintes techniques.",
   "Preservation de la qualite finale sans compromis sur la cadence.",
   "Optimisation economique des choix fil pour la marge operationnelle.",
-  "Accompagnement selon usage final: produit, machine et finition.",
 ];
 
 const statureItems = [
-  { label: "Depuis", value: "2005", detail: "Presence durable sur le marche textile B2B." },
-  { label: "Modele", value: "B2B", detail: "Approche exclusivement professionnelle." },
-  { label: "Univers", value: "5+", detail: "Familles filaires couvrees et sur mesure." },
-  { label: "Reseau", value: "Global", detail: "Sourcing selectionne pour fiabilite et constance." },
+  { label: "Depuis", value: "2005", detail: "Deux decennies de fabrication textile et de sourcing fil." },
+  { label: "Secteur", value: "Pro.", detail: "Marques, distributeurs et professionnels du textile." },
+  { label: "Produits", value: "6+", detail: "Chaussettes, pulls, jeans, t-shirts, joggings, sous-vetements." },
+  { label: "Reseau", value: "Global", detail: "Acheteurs et partenaires selectionnes a l'international." },
 ];
 
 export default function HomePage() {
@@ -89,7 +88,7 @@ export default function HomePage() {
           minHeight: "92vh",
           overflow: "hidden",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
         }}
       >
         {/* Image textile plein-fond — bobines colorées industrielles */}
@@ -101,12 +100,13 @@ export default function HomePage() {
           loading="eager"
           style={{
             position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center 40%",
-            opacity: 0.52,
+            top: "50%",
+            left: "50%",
+            width: "max(100vh, 100vw)",
+            height: "max(100vw, 100vh)",
+            objectFit: "contain",
+            opacity: 0.50,
+            transform: "translate(-50%, -50%)",
           }}
         />
         {/* Overlay cinématographique — profondeur sans étouffement */}
@@ -115,7 +115,7 @@ export default function HomePage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(148deg, rgba(4,4,5,0.94) 0%, rgba(4,4,5,0.68) 56%, rgba(4,4,5,0.88) 100%)",
+              "linear-gradient(148deg, rgba(4,4,5,0.18) 0%, rgba(4,4,5,0.0) 50%, rgba(4,4,5,0.12) 100%)",
           }}
         />
         {/* Fondu bas vers la continuité sombre de la page */}
@@ -144,71 +144,91 @@ export default function HomePage() {
           }}
         />
 
+        {/* Ombré gauche → transparent — pleine hauteur section */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: "90%",
+            background: "linear-gradient(to right, rgba(0, 0, 0, 0.74) 20%, rgba(0, 0, 0, 0.62) 40%, transparent 100%)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        />
+
         {/* Contenu hero avec shell */}
         <div
           className="tb-shell"
           style={{
             position: "relative",
-            zIndex: 1,
+            zIndex: 2,
             width: "100%",
-            padding: "clamp(80px, 10vw, 140px) 0",
+            padding: "clamp(10px, 4vw, 45px) 0",
           }}
         >
-          <div style={{ display: "grid", gap: 28, maxWidth: 1020 }}>
+          <div style={{
+            position: "relative",
+            display: "grid",
+            gap: 28,
+            maxWidth: "min(720px, 66%)",
+            paddingLeft: "clamp(32px, 6vw, 96px)",
+            paddingRight: "clamp(32px, 6vw, 96px)",
+            paddingTop: "clamp(32px, 4vw, 56px)",
+            paddingBottom: "clamp(32px, 4vw, 56px)",
+          }}>
             <p className="tb-eyebrow" style={{ color: "#7a7570" }}>
-              Sourcing Textile Premium — Casablanca, Maroc
+              Tbartex - Casablanca, Maroc
             </p>
-            <h1 className="tb-title-xl" style={{ color: "#ece9e3" }}>
-              Maitrise
+            <h1 className="tb-title-xl" style={{ color: "#ece9e3", fontSize: "clamp(22px, 3.5vw, 46px)", lineHeight: 1.2 }}>
+              Fabricant Textile.
               <br />
-              Matiere.
-              <br />
-              Exigence
-              <br />
-              Industrielle.
+              Fournisseur De Fil.
             </h1>
             <p
               className="tb-copy"
-              style={{ maxWidth: 540, fontSize: 16, lineHeight: 1.88, color: "#9a9590" }}
+              style={{ fontSize: 16, lineHeight: 1.88, color: "#CCC4B1" }}
             >
-              Tbartex structure des approvisionnements filaires fiables pour industriels,
-              fabricants, ateliers et marques B2B qui exigent regularite,
-              precision et vision long terme.
+              Tbartex approvisionne les industriels du textile
+              en fils techniques selectionnés pour leur regularite et leur
+              tenue en production, et fabrique des vetements pour les marques et distributeurs exigeants a la recherche de fiabilite et de qualite.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", paddingTop: 8 }}>
               <Link href="/contact" className="tb-button tb-button--solid">
-                Ouvrir Une Discussion Technique
+                Demander Un Devis
               </Link>
               <Link href="/nos-fils" className="tb-button tb-button--line">
-                Voir Les Univers De Fils
+                Voir Nos Fils
               </Link>
             </div>
           </div>
 
-          {/* Tag géographique — ancrage discret de marque */}
-          <div
+        </div>
+
+        {/* Tag géographique — bas de l'image */}
+        <div
+          style={{
+            position: "absolute",
+            right: "clamp(12px, 2vw, 28px)",
+            bottom: "clamp(12px, 2vw, 24px)",
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            zIndex: 3,
+          }}
+        >
+          <span style={{ display: "block", width: 20, height: 1, background: "#52504e" }} />
+          <span
             style={{
-              position: "absolute",
-              right: 0,
-              bottom: 0,
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              paddingBottom: "clamp(12px, 2vw, 24px)",
+              fontSize: 9,
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              color: "#52504e",
             }}
           >
-            <span style={{ display: "block", width: 20, height: 1, background: "#52504e" }} />
-            <span
-              style={{
-                fontSize: 9,
-                letterSpacing: "0.28em",
-                textTransform: "uppercase",
-                color: "#52504e",
-              }}
-            >
-              Casablanca — 2005
-            </span>
-          </div>
+            Casablanca — 2005
+          </span>
         </div>
       </section>
 
@@ -217,26 +237,25 @@ export default function HomePage() {
           Titre fort à gauche, 3 piliers numérotés à droite.
           Séparateur horizontal en ouverture de section.
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "96px 0 112px" }}>
-        <div className="tb-shell" style={{ display: "grid", gap: 52 }}>
-          <div className="tb-rule" />
+      <section style={{ padding: "32px 0", background: "#CCC4B1" }}>
+        <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
-              gap: "36px 72px",
-              alignItems: "start",
+              gap: "16px 48px",
+              alignItems: "center",
             }}
           >
-            <div style={{ display: "grid", gap: 24 }}>
-              <p className="tb-eyebrow">Manifeste</p>
-              <h2 className="tb-title-lg" style={{ color: "#e6e3dd" }}>
-                Une Maison B2B Construite Pour La Realite Du Textile, Pas Pour Le Decor.
+            <div style={{ display: "grid", gap: 12 }}>
+              <p className="tb-eyebrow" style={{ color: "#7a4e2e" }}>Manifeste</p>
+              <h2 className="tb-title-lg" style={{ color: "#1a0d06", fontSize: "clamp(16px, 2vw, 26px)", lineHeight: 1.15 }}>
+              Fabrication Et Sourcing. Le Meme Niveau D'Exigence Des Deux Cotes.
               </h2>
-              <p className="tb-copy" style={{ maxWidth: 540 }}>
-                Notre valeur ne repose pas sur un discours: elle repose sur la constance des lots,
-                la lisibilite des decisions matiere et la tenue des engagements
-                en environnement de production.
+              <p className="tb-copy" style={{ maxWidth: 540, color: "#3a2010", fontSize: 13 }}>
+                Notre valeur ne repose pas sur un discours: elle repose sur la
+                regularite de nos productions, la constance de nos lots fil
+                et la tenue de nos engagements a chaque commande.
               </p>
             </div>
             <div style={{ display: "grid", gap: 0, paddingTop: 6 }}>
@@ -247,9 +266,9 @@ export default function HomePage() {
                     display: "grid",
                     gridTemplateColumns: "28px 1fr",
                     gap: 18,
-                    padding: "22px 0",
-                    borderTop: i === 0 ? "1px solid #1e1e26" : "none",
-                    borderBottom: "1px solid #1e1e26",
+                    padding: "12px 0",
+                    borderTop: i === 0 ? "1px solid rgba(0,0,0,0.16)" : "none",
+                    borderBottom: "1px solid rgba(0,0,0,0.16)",
                     alignItems: "start",
                   }}
                 >
@@ -257,7 +276,7 @@ export default function HomePage() {
                     style={{
                       fontSize: 10,
                       letterSpacing: "0.14em",
-                      color: "#5a5654",
+                      color: "#3c1b0a",
                       paddingTop: 3,
                     }}
                   >
@@ -266,9 +285,9 @@ export default function HomePage() {
                   <p
                     style={{
                       margin: 0,
-                      color: "#cac7c1",
-                      lineHeight: 1.82,
-                      fontSize: 14,
+                      color: "#2a1608",
+                      lineHeight: 1.7,
+                      fontSize: 12,
                       letterSpacing: "0.01em",
                     }}
                   >
@@ -286,7 +305,7 @@ export default function HomePage() {
           Vraies photos textile, hauteur 260px, composition sobre.
           Fond sombre continu entre les sections.
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "0 0 112px" }}>
+      <section style={{ padding: "76px 0", background: "#322A1D" }}>
         <div className="tb-shell" style={{ display: "grid", gap: 28 }}>
           <div
             style={{
@@ -299,28 +318,28 @@ export default function HomePage() {
             }}
           >
             <div style={{ display: "grid", gap: 14 }}>
-              <p className="tb-eyebrow">Offre Et Univers Textile</p>
+              <p className="tb-eyebrow">Fils Par Application</p>
               <p
                 style={{
                   margin: 0,
                   fontSize: "clamp(18px, 2.4vw, 26px)",
                   letterSpacing: "-0.016em",
-                  color: "#d4d0cb",
+                  color: "#f0ece6",
                   fontWeight: 300,
                   lineHeight: 1.2,
                 }}
               >
-                Quatre univers filaires. Une seule exigence.
+                Fils Pour Chaque Application.
               </p>
             </div>
             <span className="tb-pill">Approche Non Cataloguelle</span>
           </div>
 
-          {/* Grille 2×2 éditoriale */}
+          {/* Ligne unique de 4 cartes */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
               gap: 16,
             }}
           >
@@ -330,13 +349,13 @@ export default function HomePage() {
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  border: "1px solid #1c1c22",
+                  border: "1px solid rgba(0,0,0,0.12)",
                   display: "grid",
-                  gridTemplateRows: "260px 1fr",
-                  background: "#060609",
+                  gridTemplateRows: "180px 1fr",
+                  background: "#CCC4B1",
                 }}
               >
-                {/* Zone image */}
+                {/* Zone image avec étiquette */}
                 <div style={{ position: "relative", overflow: "hidden" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -348,7 +367,7 @@ export default function HomePage() {
                       height: "100%",
                       objectFit: "cover",
                       display: "block",
-                      opacity: 0.78,
+                      opacity: 0.72,
                     }}
                   />
                   <div
@@ -356,33 +375,39 @@ export default function HomePage() {
                       position: "absolute",
                       inset: 0,
                       background:
-                        "linear-gradient(180deg, rgba(4,4,5,0.04) 42%, rgba(4,4,5,0.76) 100%)",
+                        "linear-gradient(180deg, transparent 30%, rgba(4,4,5,0.82) 100%)",
                     }}
                   />
-                </div>
-
-                {/* Zone texte */}
-                <div
-                  style={{
-                    padding: "22px 24px 28px",
-                    display: "grid",
-                    gap: 10,
-                    borderTop: "1px solid #1c1c22",
-                  }}
-                >
-                  <h3
+                  {/* Étiquette titre sur image */}
+                  <div
                     style={{
-                      margin: 0,
-                      fontSize: 13,
+                      position: "absolute",
+                      left: 16,
+                      bottom: 16,
+                      fontSize: 10,
+                      letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                      color: "#e8e4de",
-                      fontWeight: 400,
+                      color: "#CCC4B1",
+                      background: "#a77729",
+                      border: "1px solid rgba(0, 0, 0, 0)",
+                      padding: "7px 12px",
                     }}
                   >
                     {panel.title}
-                  </h3>
-                  <p className="tb-copy" style={{ fontSize: 13, lineHeight: 1.82 }}>
+                  </div>
+                </div>
+
+                {/* Zone texte — corps seul */}
+                <div
+                  style={{
+                    padding: "20px 24px 26px",
+                    display: "grid",
+                    gap: 0,
+                    borderTop: "1px solid rgba(0, 0, 0, 0.12)",
+                    background: "#CCC4B1",
+                  }}
+                >
+                  <p className="tb-copy" style={{ fontSize: 13, lineHeight: 1.84, color: "#000000" }}>
                     {panel.body}
                   </p>
                 </div>
@@ -392,206 +417,45 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
       {/* ═══════════════════════════════════════════════════════
           LECTURE MATIÈRE — Slider de comparaison draggable
-          Images strictement textiles : fil de base / bobines premium.
-          Hauteur 560px pour un rendu plus immersif.
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "0 0 112px" }}>
-        <div className="tb-shell" style={{ display: "grid", gap: 28 }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 1fr) auto",
-              alignItems: "flex-end",
-              gap: 24,
-            }}
-          >
-            <div style={{ display: "grid", gap: 14 }}>
-              <p className="tb-eyebrow">Lecture Matiere</p>
-              <h2 className="tb-title-lg" style={{ maxWidth: 680, color: "#e6e3dd" }}>
-                De La Structure Brute Au Rendu Optimise.
-              </h2>
-            </div>
-            <p
-              style={{
-                margin: 0,
-                fontSize: 10,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#5e5c58",
-                whiteSpace: "nowrap",
-                paddingBottom: 4,
-              }}
-            >
-              Glisser Pour Comparer
-            </p>
+      <section style={{ padding: "48px 0", background: "#000000" }}>
+        <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
+          <div style={{ display: "grid", gap: 8 }}>
+            <p className="tb-eyebrow">Lecture Matiere</p>
+            <h2 className="tb-title-lg" style={{ maxWidth: 680, color: "#f0ece6", fontSize: "clamp(16px, 2vw, 26px)" }}>
+              De La Structure Brute Au Rendu Optimise.
+            </h2>
           </div>
-
-          {/* Slider draggable — images textile cohérentes */}
-          <div style={{ border: "1px solid #1c1c22", overflow: "hidden" }}>
+          <div style={{ overflow: "hidden" }}>
             <ImageCompare
               srcBefore={IMAGES.compareBefore}
               srcAfter={IMAGES.compareAfter}
               labelBefore="Fil Standard"
               labelAfter="Solution Optimisee"
-              height={560}
+              height={320}
             />
           </div>
-
-          <p className="tb-copy" style={{ fontSize: 13, color: "#6e6c68", maxWidth: 740 }}>
-            Le choix du fil conditionne la regularite de production, la tenue du produit final
-            et la lisibilite de la decision achat. Tbartex structure cette selection.
-          </p>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          VALEUR AJOUTÉE — Composition éditoriale
-          Image atelier textile à gauche. Conseil stratégique à droite.
-          Ratio 1:1.35 pour équilibre éditorial et respiration.
-      ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "0 0 112px" }}>
-        <div
-          className="tb-shell"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.35fr)",
-            gap: 0,
-            border: "1px solid #1c1c22",
-            overflow: "hidden",
-          }}
-        >
-          {/* Colonne image */}
-          <div style={{ position: "relative", minHeight: 560, overflow: "hidden" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMAGES.conseil}
-              alt="Atelier textile"
-              loading="lazy"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                opacity: 0.64,
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(108deg, rgba(4,4,5,0.16) 0%, rgba(4,4,5,0.52) 100%)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                left: 20,
-                bottom: 20,
-                fontSize: 9,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#d8d4cf",
-                background: "rgba(4,4,5,0.72)",
-                border: "1px solid #36343a",
-                padding: "7px 12px",
-              }}
-            >
-              Atelier Partenaire
-            </div>
-          </div>
 
-          {/* Colonne texte */}
-          <div
-            style={{
-              padding: "clamp(32px, 4vw, 56px) clamp(24px, 3.2vw, 48px)",
-              display: "grid",
-              gap: 24,
-              background:
-                "linear-gradient(160deg, rgba(255,255,255,0.016) 0%, rgba(255,255,255,0.004) 100%)",
-              borderLeft: "1px solid #1c1c22",
-              alignContent: "center",
-            }}
-          >
-            <p className="tb-eyebrow">Valeur Ajoutee Conseil</p>
-            <h2
-              className="tb-title-lg"
-              style={{
-                color: "#e6e3dd",
-                fontSize: "clamp(22px, 3.2vw, 40px)",
-                lineHeight: 1.06,
-              }}
-            >
-              Tbartex Ne Livre Pas Un Fil.
-              <br />
-              Il Eclaire Une Decision.
-            </h2>
-            <p className="tb-copy" style={{ maxWidth: 480, fontSize: 14 }}>
-              Chaque recommandation est orientee par l usage final, la contrainte technique
-              et la logique economique du client.
-            </p>
-            <div style={{ display: "grid", gap: 0 }}>
-              {valuePoints.map((point, i) => (
-                <div
-                  key={point}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gap: 14,
-                    padding: "14px 0",
-                    borderBottom:
-                      i < valuePoints.length - 1 ? "1px solid #1e1e26" : "none",
-                    alignItems: "start",
-                  }}
-                >
-                  <span
-                    style={{
-                      display: "block",
-                      width: 4,
-                      height: 4,
-                      borderRadius: "50%",
-                      background: "#5a5854",
-                      marginTop: 7,
-                      flexShrink: 0,
-                    }}
-                  />
-                  <p
-                    style={{
-                      margin: 0,
-                      color: "#c6c3be",
-                      fontSize: 14,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    {point}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div style={{ paddingTop: 6 }}>
-              <Link href="/conseil" className="tb-button tb-button--line">
-                L Approche Conseil Tbartex
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════
           STATURE — Bande de données
           4 chiffres clés, séparateurs fins, typo large 300.
           Grande plage d'air autour des chiffres.
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "0 0 112px" }}>
+      <section style={{ padding: "40px 0", background: "#EDE5DA" }}>
         <div
           className="tb-shell"
           style={{
-            borderTop: "1px solid #1e1e26",
-            borderBottom: "1px solid #1e1e26",
-            padding: "56px 0",
+                borderTop: "1px solid rgba(0,0,0,0.14)",
+                borderBottom: "1px solid rgba(0,0,0,0.14)",
+                padding: "36px 0",
           }}
         >
           <div
@@ -605,10 +469,10 @@ export default function HomePage() {
               <div
                 key={item.label}
                 style={{
-                  padding: i === 0 ? "0 36px 0 0" : "0 36px",
-                  borderLeft: i > 0 ? "1px solid #1e1e26" : "none",
+                  padding: i === 0 ? "0 24px 0 0" : "0 24px",
+                  borderLeft: i > 0 ? "1px solid rgba(0,0,0,0.12)" : "none",
                   display: "grid",
-                  gap: 8,
+                  gap: 4,
                 }}
               >
                 <p
@@ -617,7 +481,7 @@ export default function HomePage() {
                     fontSize: 9,
                     letterSpacing: "0.26em",
                     textTransform: "uppercase",
-                    color: "#6e6c68",
+                    color: "#7a5e42",
                   }}
                 >
                   {item.label}
@@ -625,10 +489,10 @@ export default function HomePage() {
                 <p
                   style={{
                     margin: 0,
-                    fontSize: "clamp(32px, 4.2vw, 56px)",
+                    fontSize: "clamp(22px, 2.8vw, 36px)",
                     letterSpacing: "-0.03em",
                     textTransform: "uppercase",
-                    color: "#e6e3dd",
+                    color: "#3c1b0a",
                     fontWeight: 300,
                     lineHeight: 0.95,
                   }}
@@ -638,9 +502,9 @@ export default function HomePage() {
                 <p
                   style={{
                     margin: 0,
-                    fontSize: 13,
-                    color: "#7c7a76",
-                    lineHeight: 1.68,
+                    fontSize: 11,
+                    color: "#4a3020",
+                    lineHeight: 1.5,
                     paddingTop: 2,
                   }}
                 >
@@ -657,60 +521,36 @@ export default function HomePage() {
           Titre fort, centration noble, tag géographique
           de fermeture. Sobre, mémorable, sans gadget.
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ padding: "0 0 120px" }}>
+      <section style={{ padding: "36px 0", background: "#322A1D" }}>
         <div className="tb-shell" style={{ display: "grid", gap: 0 }}>
           <div className="tb-rule" />
           <div
             style={{
-              padding: "88px clamp(20px, 8vw, 160px)",
-              display: "grid",
-              gap: 28,
+              padding: "32px clamp(20px, 8vw, 160px)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 16,
               textAlign: "center",
             }}
           >
-            <p className="tb-eyebrow" style={{ textAlign: "center" }}>
-              Prochain Pas
-            </p>
+            <p className="tb-eyebrow" style={{ textAlign: "center" }}>Prochain Pas</p>
             <h2
               className="tb-title-lg"
               style={{
-                color: "#e6e3dd",
-                maxWidth: 760,
-                margin: "0 auto",
+                color: "#ece9e3",
+                maxWidth: 640,
+                margin: 0,
                 textAlign: "center",
                 lineHeight: 1.1,
-                fontSize: "clamp(28px, 5vw, 62px)",
+                fontSize: "clamp(18px, 2.4vw, 32px)",
               }}
             >
-              Votre Production
-              <br />
-              Merite Une Base Matiere
-              <br />
-              Claire Et Solide.
+              Vetement Sur Mesure Ou Sourcing Fil - Parlons De Votre Besoin.
             </h2>
-            <p
-              className="tb-copy"
-              style={{
-                maxWidth: 520,
-                margin: "0 auto",
-                textAlign: "center",
-                fontSize: 15,
-              }}
-            >
-              Parlons de vos volumes, contraintes et objectifs qualite
-              pour construire une trajectoire filaire durable.
-            </p>
-            <div
-              style={{
-                display: "flex",
-                gap: 14,
-                flexWrap: "wrap",
-                justifyContent: "center",
-                paddingTop: 8,
-              }}
-            >
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center" }}>
               <Link href="/contact" className="tb-button tb-button--solid">
-                Contacter Tbartex
+                Demander Un Devis
               </Link>
               <Link href="/entreprise" className="tb-button tb-button--line">
                 Decouvrir L Entreprise
@@ -718,19 +558,18 @@ export default function HomePage() {
             </div>
           </div>
           <div className="tb-rule" />
-          {/* Tag géographique de clôture */}
           <p
             style={{
               margin: 0,
-              paddingTop: 28,
+              paddingTop: 20,
               textAlign: "center",
               fontSize: 10,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
-              color: "#4a4846",
+              color: "#9a8474",
             }}
           >
-            Tbartex — Casablanca, Maroc
+            Tbartex - Casablanca, Maroc
           </p>
         </div>
       </section>

@@ -2,340 +2,414 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Container from "@/components/ui/Container";
-import SectionWrapper from "@/components/ui/SectionWrapper";
-import PageHero from "@/components/sections/PageHero";
-import { siteConfig } from "@/content/site";
 import type { TypeDemande } from "@/types";
 
-const TYPES_DEMANDE: TypeDemande[] = [
+const TYPES: TypeDemande[] = [
   "Demande de devis",
   "Demande d'information",
+  "Conseil",
   "Partenariat / sourcing",
   "Autre",
 ];
 
-const inputClass =
-  "w-full h-12 px-5 border border-[#ebebeb] bg-white text-[14px] text-[#111111] outline-none focus:border-[#aaaaaa] transition-colors placeholder:text-[#cccccc] disabled:opacity-50 disabled:cursor-not-allowed";
-
-const labelClass = "block text-[10px] font-medium uppercase tracking-[0.18em] text-[#9a9a9a] mb-3";
-
-type FormStatus = "idle" | "loading" | "success" | "error";
-
-interface FormFields {
-  nom: string;
-  entreprise: string;
-  email: string;
-  telephone: string;
-  type_demande: TypeDemande;
-  message: string;
-  consentement_confidentialite: boolean;
-}
-
-const emptyForm: FormFields = {
-  nom: "",
-  entreprise: "",
-  email: "",
-  telephone: "",
-  type_demande: "Demande de devis",
-  message: "",
-  consentement_confidentialite: false,
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.10)",
+  color: "#ece9e3",
+  fontSize: 14,
+  padding: "14px 16px",
+  outline: "none",
+  transition: "border-color 0.2s",
+  fontFamily: "inherit",
 };
 
-function validateClient(fields: FormFields): string | null {
-  if (fields.nom.trim().length < 2) return "Le nom est requis (minimum 2 caractères).";
-  if (fields.entreprise.trim().length < 2) return "L'entreprise est requise.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(fields.email.trim()))
-    return "L'adresse email est invalide.";
-  if (fields.message.trim().length < 10)
-    return "Le message est trop court (minimum 10 caractères).";
-  if (!fields.consentement_confidentialite)
-    return "Vous devez accepter la politique de confidentialité.";
-  return null;
-}
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 10,
+  letterSpacing: "0.22em",
+  textTransform: "uppercase",
+  color: "#7a7570",
+  marginBottom: 8,
+};
 
 export default function ContactPage() {
-  const [fields, setFields] = useState<FormFields>(emptyForm);
-  const [honeypot, setHoneypot] = useState("");
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [form, setForm] = useState({
+    nom: "",
+    entreprise: "",
+    email: "",
+    telephone: "",
+    type_demande: "" as TypeDemande | "",
+    message: "",
+    consentement_confidentialite: false,
+    website: "", // honeypot
+  });
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) {
-    const { name, value, type } = e.target;
-    setFields((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function set(field: string, value: string | boolean) {
+    setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-    const clientError = validateClient(fields);
-    if (clientError) {
-      setStatus("error");
-      setErrorMessage(clientError);
-      return;
-    }
-
-    setStatus("loading");
-    setErrorMessage("");
+    if (status === "sending") return;
+    setStatus("sending");
+    setErrorMsg("");
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...fields, website: honeypot }),
+        body: JSON.stringify(form),
       });
-
       const data = await res.json();
-
       if (!res.ok) {
-        throw new Error(data.error ?? "Erreur inattendue.");
+        setErrorMsg(data.error ?? "Une erreur est survenue.");
+        setStatus("error");
+      } else {
+        setStatus("success");
       }
-
-      setStatus("success");
-      setFields(emptyForm);
-    } catch (err) {
+    } catch {
+      setErrorMsg("Impossible d'envoyer le formulaire. Veuillez réessayer.");
       setStatus("error");
-      setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Une erreur est survenue. Merci de réessayer ou de nous contacter directement."
-      );
     }
   }
 
-  const isLoading = status === "loading";
-
   return (
-    <>
-      <PageHero
-        label="Contact"
-        title="Parlons de votre besoin."
-        subtitle={`${siteConfig.delaiReponse}. Remplissez le formulaire ou écrivez-nous directement.`}
-      />
+    <main style={{ background: "transparent" }}>
 
-      <SectionWrapper alternate>
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      {/* HERO */}
+      <section style={{ padding: "80px 0 64px", background: "#0d0d0d" }}>
+        <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
+          <div className="tb-rule" />
+          <div style={{ display: "grid", gap: 16, paddingTop: 32 }}>
+            <p className="tb-eyebrow">Conseil & Contact - Tbartex</p>
+            <h1
+              className="tb-title-xl"
+              style={{
+                color: "#ece9e3",
+                fontSize: "clamp(22px, 3vw, 40px)",
+                maxWidth: 680,
+              }}
+            >
+              Conseil &amp;{" "}
+              <span style={{ color: "#CCC4B1", fontStyle: "italic" }}>Contact</span>
+            </h1>
+            <p className="tb-copy" style={{ maxWidth: 520, fontSize: 14, color: "#a8a5a0" }}>
+              Partagez votre besoin. Nous répondons sous 24–48 h avec
+              une proposition adaptée à votre production.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            {/* Formulaire */}
-            {status === "success" ? (
-              <div className="flex flex-col gap-6 justify-center py-12">
-                <div className="w-8 h-px bg-[#cccccc] mb-4" />
-                  <h2 className="text-[22px] font-light text-[#111111] tracking-tight">Demande bien reçue.</h2>
-                <p className="text-[14px] text-[#666666] leading-relaxed">
-                  Nous avons bien reçu votre message. {siteConfig.delaiReponse.toLowerCase()}.
-                </p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#9a9a9a] hover:text-[#111111] transition-colors text-left"
+      {/* CONTENU PRINCIPAL */}
+      <section style={{ padding: "72px 0 96px", background: "#0d0d0d" }}>
+        <div
+          className="tb-shell"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.6fr)",
+            gap: "0 80px",
+            alignItems: "start",
+          }}
+        >
+          {/* COLONNE GAUCHE — informations */}
+          <div style={{ display: "grid", gap: 40, position: "sticky", top: 32 }}>
+
+            <div style={{ display: "grid", gap: 20 }}>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 10,
+                  letterSpacing: "0.24em",
+                  textTransform: "uppercase",
+                  color: "#CCC4B1",
+                }}
+              >
+                Coordonnées
+              </p>
+              {[
+                { label: "Email", value: "contact@tbartex.com" },
+                { label: "Téléphone", value: "+212 6 XX XX XX XX" },
+                { label: "Adresse", value: "Casablanca, Maroc" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    padding: "16px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.07)",
+                    display: "grid",
+                    gap: 4,
+                  }}
                 >
-                  Envoyer une autre demande &rarr;
-                </button>
-              </div>
-            ) : (
-              <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
-                {/* Honeypot anti-spam */}
-                <input
-                  type="text"
-                  name="website"
-                  value={honeypot}
-                  onChange={(e) => setHoneypot(e.target.value)}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  tabIndex={-1}
-                  style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}
-                />
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="nom" className={labelClass}>
-                      Prénom / Nom <span className="text-[#cccccc]">*</span>
-                    </label>
-                    <input
-                      id="nom"
-                      name="nom"
-                      type="text"
-                      placeholder="Jean Dupont"
-                      autoComplete="name"
-                      className={inputClass}
-                      value={fields.nom}
-                      onChange={handleChange}
-                      disabled={isLoading}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="entreprise" className={labelClass}>
-                      Entreprise <span className="text-[#cccccc]">*</span>
-                    </label>
-                    <input
-                      id="entreprise"
-                      name="entreprise"
-                      type="text"
-                      placeholder="Votre entreprise"
-                      autoComplete="organization"
-                      className={inputClass}
-                      value={fields.entreprise}
-                      onChange={handleChange}
-                      disabled={isLoading}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className={labelClass}>
-                    Email <span className="text-[#cccccc]">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="email@entreprise.com"
-                    autoComplete="email"
-                    className={inputClass}
-                    value={fields.email}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="telephone" className={labelClass}>
-                    Téléphone{" "}
-                    <span className="text-[#cccccc] normal-case tracking-normal font-normal">(optionnel)</span>
-                  </label>
-                  <input
-                    id="telephone"
-                    name="telephone"
-                    type="tel"
-                    placeholder="+33 6 00 00 00 00"
-                    autoComplete="tel"
-                    className={inputClass}
-                    value={fields.telephone}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="type_demande" className={labelClass}>
-                    Type de demande <span className="text-[#cccccc]">*</span>
-                  </label>
-                  <select
-                    id="type_demande"
-                    name="type_demande"
-                    className={`${inputClass} cursor-pointer`}
-                    value={fields.type_demande}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                  >
-                    {TYPES_DEMANDE.map((t) => (
-                      <option key={t} value={t}>{t}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className={labelClass}>
-                    Message <span className="text-[#cccccc]">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Décrivez votre besoin, les volumes attendus, les matières recherchées…"
-                    rows={5}
-                    className={`${inputClass} h-auto py-3 resize-none`}
-                    value={fields.message}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                    required
-                  />
-                </div>
-
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    name="consentement_confidentialite"
-                    type="checkbox"
-                    className="mt-0.5 w-4 h-4 shrink-0 accent-[#0a0a0a] cursor-pointer"
-                    checked={fields.consentement_confidentialite}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                    required
-                  />
-                  <span className="text-[13px] text-[#888888] leading-relaxed">
-                    J&apos;accepte que mes données soient utilisées pour traiter ma demande,
-                    conformément à la{" "}
-                    <Link
-                      href="/politique-confidentialite"
-                      className="text-[#111111] hover:text-[#555555] underline underline-offset-2"
-                    >
-                      politique de confidentialité
-                    </Link>
-                    . <span className="text-[#cccccc]">*</span>
-                  </span>
-                </label>
-
-                {status === "error" && errorMessage && (
-                  <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-[4px] px-4 py-3">
-                    {errorMessage}
+                  <p style={{ margin: 0, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a5755" }}>
+                    {item.label}
                   </p>
-                )}
+                  <p style={{ margin: 0, fontSize: 14, color: "#ece9e3" }}>
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="h-12 px-8 bg-[#111111] text-white text-[11px] font-medium tracking-[0.12em] uppercase hover:bg-[#333333] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {isLoading ? (
-                    <>
-                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                      </svg>
-                      Envoi en cours…
-                    </>
-                  ) : (
-                    "Envoyer ma demande"
-                  )}
-                </button>
-              </form>
-            )}
+            <div
+              style={{
+                padding: "24px",
+                background: "#322A1D",
+                border: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
+              <p style={{ margin: "0 0 8px", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#CCC4B1" }}>
+                Disponibilités
+              </p>
+              <p style={{ margin: 0, fontSize: 13, color: "#a8a5a0", lineHeight: 1.8 }}>
+                Lundi – Vendredi<br />
+                09h00 – 18h00 (GMT+1)
+              </p>
+            </div>
 
-            {/* Coordonnées */}
-            <div className="flex flex-col gap-12 md:pt-4">
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] mb-4">Email</p>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-[15px] text-[#111111] hover:text-[#555555] transition-colors"
+            <div style={{ display: "grid", gap: 10 }}>
+              <p style={{ margin: 0, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#5a5755" }}>
+                Pages utiles
+              </p>
+              {[
+                { href: "/nos-fils", label: "Catalogue des fils" },
+                { href: "/conseil", label: "Approche conseil" },
+                { href: "/entreprise", label: "L'entreprise" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    fontSize: 13,
+                    color: "#CCC4B1",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
                 >
-                  {siteConfig.email}
-                </a>
-              </div>
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#aaaaaa] mb-4">Téléphone</p>
-                <a
-                  href={`tel:${siteConfig.telephone}`}
-                  className="text-[15px] text-[#111111] hover:text-[#555555] transition-colors"
-                >
-                  {siteConfig.telephone}
-                </a>
-              </div>
-              <div className="pt-8 border-t border-[#f0f0f0]">
-                <p className="text-[13px] text-[#888888] leading-relaxed">{siteConfig.delaiReponse}.</p>
-              </div>
+                  <span style={{ display: "block", width: 16, height: 1, background: "#3c1b0a" }} />
+                  {link.label}
+                </Link>
+              ))}
             </div>
 
           </div>
-        </Container>
-      </SectionWrapper>
-    </>
+
+          {/* COLONNE DROITE — formulaire */}
+          <div>
+            {status === "success" ? (
+              <div
+                style={{
+                  padding: "48px 40px",
+                  background: "#322A1D",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  display: "grid",
+                  gap: 16,
+                  textAlign: "center",
+                }}
+              >
+                <div className="tb-rule" />
+                <p className="tb-eyebrow" style={{ textAlign: "center", paddingTop: 24, color: "#CCC4B1" }}>
+                  Message Envoyé
+                </p>
+                <h2
+                  className="tb-title-lg"
+                  style={{ color: "#ece9e3", fontSize: "clamp(20px, 2.4vw, 32px)", textAlign: "center" }}
+                >
+                  Merci, Nous Revenons Vers Vous Sous 48 H.
+                </h2>
+                <p className="tb-copy" style={{ fontSize: 13, color: "#a8a5a0", textAlign: "center" }}>
+                  Votre demande a bien été enregistrée.
+                </p>
+                <div className="tb-rule" style={{ marginTop: 16 }} />
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: "grid", gap: 28 }} noValidate>
+
+                {/* Honeypot — caché */}
+                <input
+                  type="text"
+                  name="website"
+                  value={form.website}
+                  onChange={(e) => set("website", e.target.value)}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  autoComplete="off"
+                />
+
+                {/* Ligne Nom + Entreprise */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                  <div>
+                    <label style={labelStyle}>Nom *</label>
+                    <input
+                      type="text"
+                      required
+                      value={form.nom}
+                      onChange={(e) => set("nom", e.target.value)}
+                      placeholder="Votre nom"
+                      style={inputStyle}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Entreprise *</label>
+                    <input
+                      type="text"
+                      required
+                      value={form.entreprise}
+                      onChange={(e) => set("entreprise", e.target.value)}
+                      placeholder="Nom de l'entreprise"
+                      style={inputStyle}
+                    />
+                  </div>
+                </div>
+
+                {/* Ligne Email + Téléphone */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                  <div>
+                    <label style={labelStyle}>Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => set("email", e.target.value)}
+                      placeholder="email@entreprise.com"
+                      style={inputStyle}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Téléphone</label>
+                    <input
+                      type="tel"
+                      value={form.telephone}
+                      onChange={(e) => set("telephone", e.target.value)}
+                      placeholder="+212 6 XX XX XX XX"
+                      style={inputStyle}
+                    />
+                  </div>
+                </div>
+
+                {/* Type de demande */}
+                <div>
+                  <label style={labelStyle}>Type de demande *</label>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                    {TYPES.map((type) => {
+                      const active = form.type_demande === type;
+                      return (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => set("type_demande", type)}
+                          style={{
+                            padding: "12px 14px",
+                            fontSize: 11,
+                            letterSpacing: "0.12em",
+                            textTransform: "uppercase",
+                            textAlign: "left",
+                            background: active ? "#322A1D" : "rgba(255,255,255,0.03)",
+                            border: active ? "1px solid #CCC4B1" : "1px solid rgba(255,255,255,0.09)",
+                            color: active ? "#CCC4B1" : "#7a7570",
+                            cursor: "pointer",
+                            transition: "all 0.2s",
+                            fontFamily: "inherit",
+                          }}
+                        >
+                          {type}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label style={labelStyle}>Message *</label>
+                  <textarea
+                    required
+                    rows={6}
+                    value={form.message}
+                    onChange={(e) => set("message", e.target.value)}
+                    placeholder="Décrivez votre besoin, vos volumes, vos contraintes techniques…"
+                    style={{
+                      ...inputStyle,
+                      resize: "vertical",
+                      minHeight: 140,
+                    }}
+                  />
+                </div>
+
+                {/* Consentement */}
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    alignItems: "flex-start",
+                    padding: "16px",
+                    background: "rgba(255,255,255,0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    id="consentement"
+                    required
+                    checked={form.consentement_confidentialite}
+                    onChange={(e) => set("consentement_confidentialite", e.target.checked)}
+                    style={{ marginTop: 2, accentColor: "#CCC4B1", cursor: "pointer" }}
+                  />
+                  <label
+                    htmlFor="consentement"
+                    style={{ fontSize: 12, color: "#7a7570", lineHeight: 1.7, cursor: "pointer" }}
+                  >
+                    J'accepte que Tbartex traite mes données dans le cadre de cette demande,
+                    conformément à sa{" "}
+                    <Link href="/politique-confidentialite" style={{ color: "#CCC4B1", textDecoration: "underline" }}>
+                      politique de confidentialité
+                    </Link>
+                    . *
+                  </label>
+                </div>
+
+                {/* Erreur */}
+                {status === "error" && (
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: 13,
+                      color: "#e07070",
+                      padding: "12px 16px",
+                      background: "rgba(220,80,80,0.08)",
+                      border: "1px solid rgba(220,80,80,0.2)",
+                    }}
+                  >
+                    {errorMsg}
+                  </p>
+                )}
+
+                {/* Bouton */}
+                <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="tb-button tb-button--solid"
+                    style={{ opacity: status === "sending" ? 0.6 : 1, cursor: status === "sending" ? "not-allowed" : "pointer" }}
+                  >
+                    {status === "sending" ? "Envoi en cours…" : "Envoyer La Demande"}
+                  </button>
+                  <p style={{ margin: 0, fontSize: 11, color: "#5a5755" }}>* champs obligatoires</p>
+                </div>
+
+              </form>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+    </main>
   );
 }

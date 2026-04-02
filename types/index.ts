@@ -24,6 +24,7 @@ export interface PositionnementPoint {
 export type TypeDemande =
   | "Demande de devis"
   | "Demande d'information"
+  | "Conseil"
   | "Partenariat / sourcing"
   | "Autre";
 
