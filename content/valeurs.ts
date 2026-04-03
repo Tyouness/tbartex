@@ -5,7 +5,7 @@ export const axesValeur: AxeValeur[] = [
     id: "alternatives",
     titre: "Proposition d'alternatives",
     corps:
-      "Tbartex ne se limite pas à fournir ce qui est demandé. Nous analysons le besoin et proposons des alternatives de fils qui répondent aux mêmes exigences techniques, parfois avec un meilleur rapport qualité/coût ou une disponibilité plus régulière.",
+      "Bartex ne se limite pas à fournir ce qui est demandé. Nous analysons le besoin et proposons des alternatives de fils qui répondent aux mêmes exigences techniques, parfois avec un meilleur rapport qualité/coût ou une disponibilité plus régulière.",
   },
   {
     id: "qualite",

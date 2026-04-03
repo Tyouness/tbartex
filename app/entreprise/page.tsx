@@ -52,7 +52,7 @@ export default function EntreprisePage() {
         <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
           <div className="tb-rule" />
           <div style={{ display: "grid", gap: 16, paddingTop: 32, maxWidth: 760 }}>
-            <p className="tb-eyebrow">L'Entreprise - Tbartex</p>
+            <p className="tb-eyebrow">L'Entreprise - Bartex</p>
             <h1
               className="tb-title-xl"
               style={{
@@ -66,7 +66,7 @@ export default function EntreprisePage() {
               </span>
             </h1>
             <p className="tb-copy" style={{ fontSize: 14, color: "#a8a5a0", maxWidth: 560 }}>
-              Depuis 2005, Tbartex fabrique des vêtements pour des marques et
+              Depuis 2005, Bartex fabrique des vêtements pour des marques et
               acheteurs professionnels, et approvisionne les industriels du textile
               en fils techniques sélectionnés. Deux métiers. Un seul niveau d'exigence.
               Notre catalogue est disponible sur demande.
@@ -94,7 +94,7 @@ export default function EntreprisePage() {
           </div>
           <div style={{ display: "grid", gap: 20 }}>
             <p className="tb-copy" style={{ fontSize: 14, color: "#a8a5a0", lineHeight: 1.9 }}>
-              Fondée en 2005 à Casablanca, Tbartex exerce deux activités complémentaires
+              Fondée en 2005 à Casablanca, Bartex exerce deux activités complémentaires
               dans le secteur textile. Nous fabriquons des vêtements : chaussettes,
               pulls, jeans, t-shirts, joggings, sous-vêtements... pour des marques,
               chaînes de distribution et acheteurs professionnels à l'international.

@@ -85,7 +85,7 @@ export default function ContactPage() {
         <div className="tb-shell" style={{ display: "grid", gap: 20 }}>
           <div className="tb-rule" />
           <div style={{ display: "grid", gap: 16, paddingTop: 32 }}>
-            <p className="tb-eyebrow">Conseil & Contact - Tbartex</p>
+            <p className="tb-eyebrow">Conseil & Contact - Bartex</p>
             <h1
               className="tb-title-xl"
               style={{
@@ -365,7 +365,7 @@ export default function ContactPage() {
                     htmlFor="consentement"
                     style={{ fontSize: 12, color: "#7a7570", lineHeight: 1.7, cursor: "pointer" }}
                   >
-                    J'accepte que Tbartex traite mes données dans le cadre de cette demande,
+                    J'accepte que Bartex traite mes données dans le cadre de cette demande,
                     conformément à sa{" "}
                     <Link href="/politique-confidentialite" style={{ color: "#CCC4B1", textDecoration: "underline" }}>
                       politique de confidentialité

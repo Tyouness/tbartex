@@ -1,5 +1,5 @@
 export const siteConfig = {
-  nom: "Tbartex",
+  nom: "Bartex",
   anneeCreation: 2005,
   email: "contact@tbartex.com",
   telephone: "+212 5XX XX XX XX",

@@ -179,7 +179,7 @@ export default function HomePage() {
             paddingBottom: "clamp(32px, 4vw, 56px)",
           }}>
             <p className="tb-eyebrow" style={{ color: "#7a7570" }}>
-              Tbartex - Casablanca, Maroc
+              Bartex - Casablanca, Maroc
             </p>
             <h1 className="tb-title-xl" style={{ color: "#ece9e3", fontSize: "clamp(22px, 3.5vw, 46px)", lineHeight: 1.2 }}>
               Fabricant Textile.
@@ -190,7 +190,7 @@ export default function HomePage() {
               className="tb-copy"
               style={{ fontSize: 16, lineHeight: 1.88, color: "#CCC4B1" }}
             >
-              Tbartex approvisionne les industriels du textile
+              Bartex approvisionne les industriels du textile
               en fils techniques selectionnés pour leur regularite et leur
               tenue en production, et fabrique des vetements pour les marques et distributeurs exigeants a la recherche de fiabilite et de qualite.
             </p>
@@ -572,7 +572,7 @@ export default function HomePage() {
               color: "#9a8474",
             }}
           >
-            Tbartex - Casablanca, Maroc
+            Bartex - Casablanca, Maroc
           </p>
         </div>
       </section>

@@ -185,7 +185,7 @@ export default function NosFilsPage() {
           <div className="tb-rule" />
           <div style={{ display: "grid", gap: 16, paddingTop: 32 }}>
             <p className="tb-eyebrow" style={{ color: "#CCC4B1" }}>
-              Catalogue Technique - Tbartex
+              Catalogue Technique - Bartex
             </p>
             <h1
               className="tb-title-xl"

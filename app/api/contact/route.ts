@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
   const notifHtml = `
     <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto">
       <div style="background:#322A1D;padding:24px 32px">
-        <p style="margin:0;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#CCC4B1">Tbartex — Nouvelle demande</p>
+        <p style="margin:0;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#CCC4B1">Bartex — Nouvelle demande</p>
       </div>
       <div style="padding:32px;border:1px solid #e5e5e5;border-top:none">
         <table style="width:100%;border-collapse:collapse">
@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
   const confirmHtml = `
     <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto">
       <div style="background:#322A1D;padding:24px 32px">
-        <p style="margin:0;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#CCC4B1">Tbartex</p>
+        <p style="margin:0;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#CCC4B1">Bartex</p>
       </div>
       <div style="padding:40px 32px;border:1px solid #e5e5e5;border-top:none">
         <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#888">Confirmation de réception</p>
@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
         </p>
         <div style="border-top:1px solid #e5e5e5;padding-top:24px">
           <p style="margin:0;font-size:12px;color:#888;line-height:1.6">
-            Tbartex — Casablanca, Maroc<br/>
+            Bartex — Casablanca, Maroc<br/>
             <a href="mailto:contact@tbartex.com" style="color:#735017;text-decoration:none">contact@tbartex.com</a>
           </p>
         </div>
@@ -125,14 +125,14 @@ export async function POST(req: NextRequest) {
   try {
     await Promise.all([
       resend.emails.send({
-        from: "Tbartex <noreply@tbartex.com>",
+        from: "Bartex <noreply@tbartex.com>",
         to: ["contact@tbartex.com"],
         replyTo: email,
         subject: `[${type_demande}] ${nom} — ${entreprise}`,
         html: notifHtml,
       }),
       resend.emails.send({
-        from: "Tbartex <noreply@tbartex.com>",
+        from: "Bartex <noreply@tbartex.com>",
         to: [email],
         subject: "Votre demande a bien été reçue — Tbartex",
         html: confirmHtml,

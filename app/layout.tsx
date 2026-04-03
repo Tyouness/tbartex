@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tbartex | Fil Textile Premium",
+  title: "Bartex | Fil Textile Premium",
   description:
-    "Tbartex accompagne les marques et industriels avec une offre fil premium, fiable et orientee execution.",
+    "Bartex accompagne les marques et industriels avec une offre fil premium, fiable et orientee execution.",
 };
 
 export default function RootLayout({

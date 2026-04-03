@@ -33,7 +33,7 @@ export default function Header() {
           href="/"
           className="text-[12px] font-medium tracking-[0.46em] uppercase text-[#f5f5f5] hover:text-white transition-colors"
         >
-          Tbartex
+          Bartex
         </Link>
 
         <ul className="hidden md:flex items-center gap-10">
