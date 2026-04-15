@@ -132,7 +132,7 @@ export default function ContactPage() {
                 Coordonnées
               </p>
               {[
-                { label: "Email", value: "contact@tbartex.com" },
+                { label: "Email", value: "contact@bartex.fr" },
                 { label: "Téléphone", value: "+212 6 XX XX XX XX" },
                 { label: "Adresse", value: "Casablanca, Maroc" },
               ].map((item) => (

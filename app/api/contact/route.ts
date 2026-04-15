@@ -110,12 +110,12 @@ export async function POST(req: NextRequest) {
         </p>
         <p style="margin:0 0 32px;font-size:14px;color:#444;line-height:1.8">
           En attendant, vous pouvez consulter notre catalogue de fils sur
-          <a href="https://www.tbartex.com/nos-fils" style="color:#735017;text-decoration:none">www.tbartex.com</a>.
+          <a href="https://www.bartex.fr/nos-fils" style="color:#735017;text-decoration:none">www.bartex.fr</a>.
         </p>
         <div style="border-top:1px solid #e5e5e5;padding-top:24px">
           <p style="margin:0;font-size:12px;color:#888;line-height:1.6">
             Bartex — Casablanca, Maroc<br/>
-            <a href="mailto:contact@tbartex.com" style="color:#735017;text-decoration:none">contact@tbartex.com</a>
+            <a href="mailto:contact@bartex.fr" style="color:#735017;text-decoration:none">contact@bartex.fr</a>
           </p>
         </div>
       </div>
@@ -125,14 +125,14 @@ export async function POST(req: NextRequest) {
   try {
     await Promise.all([
       resend.emails.send({
-        from: "Bartex <noreply@tbartex.com>",
-        to: ["contact@tbartex.com"],
+        from: "Bartex <noreply@bartex.fr>",
+        to: ["contact@bartex.fr"],
         replyTo: email,
         subject: `[${type_demande}] ${nom} — ${entreprise}`,
         html: notifHtml,
       }),
       resend.emails.send({
-        from: "Bartex <noreply@tbartex.com>",
+        from: "Bartex <noreply@bartex.fr>",
         to: [email],
         subject: "Votre demande a bien été reçue — Tbartex",
         html: confirmHtml,

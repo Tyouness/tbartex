@@ -1,7 +1,7 @@
 export const siteConfig = {
   nom: "Bartex",
   anneeCreation: 2005,
-  email: "contact@tbartex.com",
+  email: "contact@bartex.fr",
   telephone: "+212 5XX XX XX XX",
   slogan: "Importateur B2B de fils textiles",
   delaiReponse: "Réponse sous 48h ouvrées",
@@ -47,7 +47,7 @@ export const siteConfig = {
     rc:                   "[À compléter — numéro Registre de Commerce]",
     ice:                  "[À compléter — Identifiant Commun de l'Entreprise]",
     directeurPublication: "[À compléter — Nom Prénom du responsable légal]",
-    nomDomaine:           "tbartex.com",
+    nomDomaine:           "bartex.fr",
     hebergeurNom:         "Vercel Inc.",
     hebergeurAdresse:     "340 Pine Street, Suite 1200, San Francisco, CA 94104, États-Unis",
     hebergeurSite:        "https://vercel.com",
@@ -55,7 +55,7 @@ export const siteConfig = {
     // Exemples : "eu-west-2 (Europe — Irlande)", "us-east-1 (États-Unis)"
     // Cette valeur conditionne la mention transfert hors UE dans la politique de confidentialité.
     supabaseRegion:       "[À compléter — région choisie lors de la création du projet Supabase]",
-    emailRgpd:            "contact@tbartex.com",
+    emailRgpd:            "contact@bartex.fr",
     dureeConservation:    "3 ans",
     dateMaj:              "10 mars 2026",
   },

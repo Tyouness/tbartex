@@ -206,7 +206,7 @@ export default function HomePage() {
 
         </div>
 
-        {/* Tag géographique — bas de l'image */}
+        {/* Tag géographique - bas de l'image */}
         <div
           style={{
             position: "absolute",
@@ -227,7 +227,7 @@ export default function HomePage() {
               color: "#52504e",
             }}
           >
-            Casablanca — 2005
+            Casablanca - 2005
           </span>
         </div>
       </section>
