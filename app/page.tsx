@@ -10,12 +10,9 @@ const IMAGES = {
   hero: "/filebase.jpg?v=3",
 
   // Panels d'offre — 4 univers textile distincts et cohérents
-  socks:
-    "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=800&q=82&auto=format&fit=crop",
-  knit:
-    "https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=800&q=82&auto=format&fit=crop",
-  weave:
-    "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&q=82&auto=format&fit=crop",
+  socks: "/CHAUSSETTES%20ET%20MAILLE%20FINE.png",
+  knit: "/BONNETERIE%20ET%20CIRCULARITE.png",
+  weave: "/TISSAGE%20ET%20ELASTIQUES.png",
   special:
     "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=82&auto=format&fit=crop",
 

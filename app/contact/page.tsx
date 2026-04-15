@@ -133,7 +133,8 @@ export default function ContactPage() {
               </p>
               {[
                 { label: "Email", value: "contact@bartex.fr" },
-                { label: "Téléphone", value: "+212 6 XX XX XX XX" },
+                { label: "France", value: "+33 6 21 87 54 48" },
+                { label: "Maroc", value: "+212 6 61 18 39 14" },
                 { label: "Adresse", value: "Casablanca, Maroc" },
               ].map((item) => (
                 <div

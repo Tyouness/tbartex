@@ -2,7 +2,8 @@ export const siteConfig = {
   nom: "Bartex",
   anneeCreation: 2005,
   email: "contact@bartex.fr",
-  telephone: "+212 5XX XX XX XX",
+  telephone: "+212661183914",
+  telephoneFr: "+33621875448",
   slogan: "Importateur B2B de fils textiles",
   delaiReponse: "Réponse sous 48h ouvrées",
 
