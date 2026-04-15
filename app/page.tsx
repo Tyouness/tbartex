@@ -17,7 +17,7 @@ const IMAGES = {
     "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=82&auto=format&fit=crop",
 
   // Comparaison — bobine tricot (gauche) / tricot (droite)
-  compareBefore: "/bobine_tricot.jpg",
+  compareBefore: "/bobine_tricrot.jpg",
   compareAfter: "/tricot.jpg",
 
   // Valeur — atelier de tissage / métier textile
