@@ -16,11 +16,9 @@ const IMAGES = {
   special:
     "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=82&auto=format&fit=crop",
 
-  // Comparaison — fil de base (standard) / bobines premium (optimisé)
-  compareBefore:
-    "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1280&q=85&auto=format&fit=crop",
-  compareAfter:
-    "https://images.unsplash.com/photo-1614786269829-d24616faf56d?w=1280&q=85&auto=format&fit=crop",
+  // Comparaison — bobine tricot (gauche) / tricot (droite)
+  compareBefore: "/bobine_tricot.jpg",
+  compareAfter: "/tricot.jpg",
 
   // Valeur — atelier de tissage / métier textile
   conseil:
